@@ -25,5 +25,8 @@
     "express": "^4.15.3",
     "redux": "^3.7.1",
     "webpack": "^3.0.0"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
   }
 }

@@ -1,32 +1,48 @@
 "use strict"
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+import logger from 'redux-logger';
 
-// Step 3 define reducers
-const reducer = function(state={}, action) {
-  // what to do with the received action - if action type equals increment - we will update the state adding the payload
-  // need to set initial value to state, otherwise won't be able to add payload
-  switch(action.type) {
-    case "POST_BOOK":
-    return state = action.payload;
-    break;
-  }
-  return state
-}
+// IMPORT COMBINED Reducers
+import reducers from './reducers/index';
+
+// IMPORT ACTIONS
+import {addToCart} from './actions/cartActions';
+import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 
 // Step 1 create the store
-const store = createStore(reducer)
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers, middleware);
 
-store.subscribe(function() {
-  console.log('current state is: ', store.getState())
-})
+// store.subscribe(function() {
+//   console.log('current state is: ', store.getState());
+//   // console.log('current price is: ', store.getState()[1].price);
+// })
 
 // Step 2 create and dispatch actions
-store.dispatch({
-  type: "POST_BOOK",
-  payload: {
+store.dispatch(postBooks(
+  [{
     id: 1,
     title: "Fun Times",
     description: "This is a book description",
     price: 33.33
+  },
+  {
+    id: 2,
+    title: "Fun Times",
+    description: "This is a book description",
+    price: 43.33
+  }]
+))
+
+store.dispatch(deleteBooks(
+  {id: 1}
+))
+store.dispatch(updateBooks(
+  {
+    id: 2,
+    title: 'Let the games begin or Learn React'
   }
-})
+))
+
+// -->> CART ACTIONS <<--
+store.dispatch(addToCart([{id: 1}]))
