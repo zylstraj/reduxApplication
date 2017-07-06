@@ -1,24 +1,11 @@
 "use strict"
 import {createStore} from 'redux';
 
-// Step 3 define reducers
-const reducer = function(state={books:[]}, action) {
-  // what to do with the received action - if action type equals increment - we will update the state adding the payload
-  // need to set initial value to state, otherwise won't be able to add payload
-  switch(action.type) {
-    case "POST_BOOK":
-    // Non-spread operator
-    // let books = state.books.concat(action.payload);
-    // return {books};
-    // Spread operator - es6
-    return {books: [...state.books, ...action.payload]}
-    break;
-  }
-  return state
-}
+// IMPORT COMBINED Reducers
+import reducers from './reducers/index';
 
 // Step 1 create the store
-const store = createStore(reducer)
+const store = createStore(reducers)
 
 store.subscribe(function() {
   console.log('current state is: ', store.getState());
@@ -43,11 +30,14 @@ store.dispatch({
 })
 
 store.dispatch({
-  type: "POST_BOOK",
-  payload: [{
-    id: 3,
-    title: "Good Times",
-    description: "This is the 3rd book description",
-    price: 50.00
-  }]
+  type: "DELETE_BOOK",
+  payload:
+    {id: 1}
+})
+store.dispatch({
+  type: "UPDATE_BOOK",
+  payload: {
+    id: 2,
+    title: "Let the games begin."
+  }
 })
