@@ -41,3 +41,9 @@ store.dispatch({
     title: "Let the games begin."
   }
 })
+
+// -->> CART ACTIONS <<--
+store.dispatch({
+  type: "ADD_TO_CART",
+  payload: [{id: 2}]
+})
