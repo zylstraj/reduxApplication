@@ -6,6 +6,7 @@ import {getBooks} from '../../actions/booksActions';
 
 import BookItem from './bookItem';
 import BooksForm from './booksForm';
+import Cart from './cart';
 
 class BooksList extends React.Component{
   componentDidMount(){
@@ -27,6 +28,7 @@ class BooksList extends React.Component{
     })
     return(
       <div>
+      <Cart />
       <h1>Hello React</h1>
       <BooksForm />
       {bookList}
