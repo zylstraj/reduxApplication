@@ -1,4 +1,9 @@
 "use strict"
+
+// React
+import React from 'react';
+import {render} from 'react-dom';
+
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 
@@ -17,6 +22,12 @@ const store = createStore(reducers, middleware);
 //   console.log('current state is: ', store.getState());
 //   // console.log('current price is: ', store.getState()[1].price);
 // })
+
+import BooksList from './component/pages/bookList';
+
+render(
+  <BooksList />, document.getElementById('app')
+);
 
 // Step 2 create and dispatch actions
 store.dispatch(postBooks(
