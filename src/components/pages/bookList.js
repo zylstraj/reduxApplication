@@ -17,9 +17,9 @@ class BooksList extends React.Component{
     console.log('We are accessing state', this.props.books)
     const bookList = this.props.books.map(function(booksArr) {
       return(
-        <div key={booksArr.id}>
+        <div key={booksArr._id}>
           <BookItem
-            id={booksArr.id}
+            _id={booksArr._id}
             title={booksArr.title}
             description={booksArr.description}
             price={booksArr.price}/>
