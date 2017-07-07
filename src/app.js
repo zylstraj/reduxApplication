@@ -3,6 +3,7 @@
 // React
 import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
@@ -18,16 +19,14 @@ import {postBooks, deleteBooks, updateBooks} from './actions/booksActions';
 const middleware = applyMiddleware(logger);
 const store = createStore(reducers, middleware);
 
-// store.subscribe(function() {
-//   console.log('current state is: ', store.getState());
-//   // console.log('current price is: ', store.getState()[1].price);
-// })
-
-import BooksList from './component/pages/bookList';
+// Import Components
+import BooksList from './components/pages/bookList';
 
 render(
-  <BooksList />, document.getElementById('app')
-);
+  <Provider store={store}>
+    <BooksList />
+  </Provider>, document.getElementById('app')
+)
 
 // Step 2 create and dispatch actions
 store.dispatch(postBooks(
@@ -44,16 +43,3 @@ store.dispatch(postBooks(
     price: 43.33
   }]
 ))
-
-store.dispatch(deleteBooks(
-  {id: 1}
-))
-store.dispatch(updateBooks(
-  {
-    id: 2,
-    title: 'Let the games begin or Learn React'
-  }
-))
-
-// -->> CART ACTIONS <<--
-store.dispatch(addToCart([{id: 1}]))
