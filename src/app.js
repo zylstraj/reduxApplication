@@ -29,17 +29,6 @@ render(
 )
 
 // Step 2 create and dispatch actions
-store.dispatch(postBooks(
-  [{
-    id: 1,
-    title: "Fun Times",
-    description: "This is a book description",
-    price: 33.33
-  },
-  {
-    id: 2,
-    title: "Fun Times",
-    description: "Does anything change",
-    price: 43.33
-  }]
-))
+// store.dispatch(postBooks(
+//
+// ))

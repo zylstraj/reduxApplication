@@ -2,10 +2,28 @@
 
 // Books reducers
 
-export function booksReducers(state={books:[]}, action) {
+export function booksReducers(state={
+  books:
+    [{
+      id: 1,
+      title: "Fun Times",
+      description: "This is a book description",
+      price: 33.33
+    },
+    {
+      id: 2,
+      title: "Fun Times",
+      description: "Does anything change",
+      price: 43.33
+    }]
+
+  }, action) {
   // what to do with the received action - if action type equals increment - we will update the state adding the payload
   // need to set initial value to state, otherwise won't be able to add payload
   switch(action.type) {
+    case "GET_BOOKS":
+    return {...state, books:[...state.books]}
+    break;
     case "POST_BOOK":
     // Non-spread operator
     // let books = state.books.concat(action.payload);
