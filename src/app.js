@@ -39,7 +39,7 @@ store.dispatch(postBooks(
   {
     id: 2,
     title: "Fun Times",
-    description: "This is a book description",
+    description: "Does anything change",
     price: 43.33
   }]
 ))
