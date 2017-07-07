@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {getBooks} from '../../actions/booksActions';
 
 import BookItem from './bookItem';
+import BooksForm from './booksForm';
 
 class BooksList extends React.Component{
   componentDidMount(){
@@ -27,6 +28,7 @@ class BooksList extends React.Component{
     return(
       <div>
       <h1>Hello React</h1>
+      <BooksForm />
       {bookList}
       </div>
     )
